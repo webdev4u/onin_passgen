@@ -1,0 +1,3 @@
+sanic
+random-password-generator
+install sanic-jinja2
