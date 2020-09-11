@@ -11,7 +11,7 @@ jinja = SanicJinja2(app, pkg_name="main")
 @app.route("/")
 async def instructions(request):
   api_url = app.url_for('generate')
-  return jinja.render("index.html", request, api_url=api_url)
+  return jinja.render("index.html", request, api_url=api_url, policies=app.config.POLICY)
 
 @app.route("/generate_password", version=1)
 async def generate(request):
