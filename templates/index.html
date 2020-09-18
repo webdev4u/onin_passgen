@@ -71,7 +71,22 @@
                     <nav class="docs-sidebar" data-spy="affix" data-offset-top="300" data-offset-bottom="200" role="navigation">
                         <ul class="nav">
                             <li><a href="#line1">Быстрые ссылки</a></li>
-                            <li><a href="#line7">Использование API</a>
+                            <li><a href="#line2">Использование API</a></li>
+                            <li><a href="#line3">Описание переменных</a>
+                                <ul class="nav">
+                                    <li><a href="#line3_1">minlen</a></li>
+                                    <li><a href="#line3_2">maxlen</a></li>
+                                    <li><a href="#line3_3">minuchars</a></li>
+                                    <li><a href="#line3_4">minlchars</a></li>
+                                    <li><a href="#line3_5">minnumbers</a></li>
+                                    <li><a href="#line3_6">minschars</a></li>
+                                    <!-- <li><a href="#line3_7">excludeuchars</a></li>
+                                    <li><a href="#line3_8">excludelchars</a></li>
+                                    <li><a href="#line3_9">excludenumbers</a></li> -->
+                                    <!-- <li><a href="#line3_10">excludeschars</a></li> -->
+                                </ul>
+                            </li>
+                            <li><a href="#line7">Встроенные политики</a>
                                 <ul class="nav">
                                     <li><a href="#line7_1">Получение пароля для AD</a></li>
                                     <li><a href="#line7_2">Получение пароля для VPN</a></li>
@@ -186,12 +201,157 @@
 
                     </section>
                     <!-- end section -->
+                    
+                    <section id="line2" class="section">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Использование API <a href="#top">#к началу</a><hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line3" class="section">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Описание переменных <a href="#top">#к началу</a><hr></h2>
+                                <p>
+                                    Для генерирования паролей можно использовать следующие переменные
+                                    <ul>
+                                        <li><a href="#line3_1">minlen</a></li>
+                                        <li><a href="#line3_2">maxlen</a></li>
+                                        <li><a href="#line3_3">minuchars</a></li>
+                                        <li><a href="#line3_4">minlchars</a></li>
+                                        <li><a href="#line3_5">minnumbers</a></li>
+                                        <li><a href="#line3_6">minschars</a></li>
+                                        <!-- <li><a href="#line3_7">excludeuchars</a></li>
+                                        <li><a href="#line3_8">excludelchars</a></li>
+                                        <li><a href="#line3_9">excludenumbers</a></li> -->
+                                    </ul>
+                                </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_1">minlen - <a href="#top">#к началу</a></h4>
+                                <p>
+                                    Эта переменная служит для указания минимальной длины пароля
+                                    <br> Тип <b>Integer</b>
+                                    <br> Пример:
+                                    <pre class="brush: html">
+                                        {{ api_url }}?policy=AD&minlen=12
+                                    </pre>
+                                </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_2">maxlen - <a href="#top">#к началу</a></h4>
+                                <p>
+                                    Эта переменная служит для указания максимальной длины пароля
+                                    <br> Тип <b>Integer</b>
+                                    <br> Пример:
+                                    <pre class="brush: html">
+                                        {{ api_url }}?policy=AD&maxlen=20
+                                    </pre>
+                                </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_3">minuchars - <a href="#top">#к началу</a></h4>
+                                <p>
+                                    Эта переменная служит для указания минимального количества прописных букв в пароле
+                                    <br> Тип <b>Integer</b>
+                                    <br> Пример:
+                                    <pre class="brush: html">
+                                        {{ api_url }}?policy=AD&minuchars=2
+                                    </pre>
+                                </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_4">minlchars - <a href="#top">#к началу</a></h4>
+                                <p>
+                                    Эта переменная служит для указания минимального количества строчных букв в пароле
+                                    <br> Тип <b>Integer</b>
+                                    <br> Пример:
+                                    <pre class="brush: html">
+                                        {{ api_url }}?policy=AD&minlchars=2
+                                    </pre>
+                                </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_5">minnumbers - <a href="#top">#к началу</a></h4>
+                                <p>
+                                    Эта переменная служит для указания минимального количества цифр в пароле
+                                    <br> Тип <b>Integer</b>
+                                    <br> Пример:
+                                    <pre class="brush: html">
+                                        {{ api_url }}?policy=AD&minnumbers=1
+                                    </pre>
+                                </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_6">minschars - <a href="#top">#к началу</a></h4>
+                                <p>
+                                    Эта переменная служит для указания минимального количества специальных символов в пароле
+                                    <br> Тип <b>Integer</b>
+                                    <br> Пример:
+                                    <pre class="brush: html">
+                                        {{ api_url }}?policy=AD&minschars=2
+                                    </pre>
+                                </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                    </section>
+                    <!-- end section -->
 
                     <section id="line7" class="section">
 
                         <div class="row">
                             <div class="col-md-12 left-align">
-                                <h2 class="dark-text">Использование API <a href="#top">#к началу</a><hr></h2>
+                                <h2 class="dark-text">Встроенные политики <a href="#top">#к началу</a><hr></h2>
                                 <p>
                                     Для генерирования паролей используются политики (набор правил, где указаны символы, которые можно использовать, а также длина пароля)
                                     Есть следующие готовые политики
