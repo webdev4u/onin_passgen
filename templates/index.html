@@ -143,8 +143,8 @@
                                             </ol>
                                             <div class="intro2 clearfix">
                                                 <p><i class="fa fa-exclamation-triangle"></i> Если в запросе не была указана политика генерации паролей, тогда используется политика по умолчанию (DEFAULT)
-                                                    <br> Количество символов в пароле - 12
-                                                    <br> Используемые символы: ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789?#*)%
+                                                    <br> Количество символов в пароле - от 12 до 14
+                                                    <br> Используемые символы: ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789_(!$-+^&=<>,.?#*)%
                                                 </p>
                                             </div>
 
@@ -178,7 +178,7 @@
                                 <p><a href="{{ api_url }}?policy=db"  class="btn btn-primary">Получить пароль для DB, шин сообщений и пр.</a></p>
                                 <p><a href="{{ api_url }}?policy=pr"  class="btn btn-primary">Получить пароль для буфера, PanelRider-а</a></p>
                                 <p><a href="{{ api_url }}?policy=mail"  class="btn btn-primary">Получить пароль для почтовых служб</a></p>
-                                <p><a href="{{ api_url }}"  class="btn btn-primary">Получить 12 символьный пароль</a></p>
+                                <p><a href="{{ api_url }}"  class="btn btn-primary">Получить пароль - от 12 до 14 символов</a></p>
                             </div>
                             <!-- end col -->
                         </div>
@@ -205,9 +205,11 @@
                                     </ul>
                                 </p>
                                 <div class="intro2 clearfix">
-                                    <p><i class="fa fa-exclamation-triangle"></i> Для изменения количества символов в генерируемом пароле нужно добавить параметр chars_count к запросу с указанием нужного числа символов
-                                        <br> Например, если в мы хотим сгенерировать пароль для политики AD, но с количеством символов 16, а не 8:
-                                        <br> {{ api_url }}?policy=AD&chars_count=16
+                                    <p><i class="fa fa-exclamation-triangle"></i> Для изменения количества символов в генерируемом пароле нужно добавить параметры minlen и maxlen к запросу с указанием нужного числа символов
+                                        <br> Например, если в мы хотим сгенерировать пароль для политики AD, но с количеством символов 16, а не от 8 до 10:
+                                        <br> {{ api_url }}?policy=AD&minlen=16
+                                        <br> А если хотим сгенерировать пароль с количеством символов от 12 до 16:
+                                        <br> {{ api_url }}?policy=AD&minlen=12&maxlen=16
                                     </p>
                                 </div>
                             </div>
@@ -220,7 +222,7 @@
                                 <h4 id="line7_1">Получение пароля для AD - <a href="#top">#к началу</a></h4>
                                 <p>
                                     Строка запроса: {{ api_url }}?policy=AD
-                                    <br> Длина пароля: {{ policies["AD"]["CHARS_COUNT"] }} символов
+                                    <br> Длина пароля: от {{ policies["AD"]["minlen"] }} до {{ policies["AD"]["maxlen"] }} символов
                                     <br> Набор символов для генерации пароля:
                                     <pre class="brush: html">
                                         {{ policies["AD"]["CHARS_ALLOWED"] }}
@@ -238,7 +240,7 @@
                                 <h4 id="line7_2">Получение пароля для VPN - <a href="#top">#к началу</a></h4>
                                 <p>
                                     Строка запроса: {{ api_url }}?policy=VPN
-                                    <br> Длина пароля: {{ policies["VPN"]["CHARS_COUNT"] }} символов
+                                    <br> Длина пароля: от {{ policies["VPN"]["minlen"] }} до {{ policies["VPN"]["maxlen"] }} символов
                                     <br> Набор символов для генерации пароля:
                                     <pre class="brush: html">
                                         {{ policies["VPN"]["CHARS_ALLOWED"] }}
@@ -256,7 +258,7 @@
                                 <h4 id="line7_3">Получение пароля для DB - <a href="#top">#к началу</a></h4>
                                 <p>
                                     Строка запроса: {{ api_url }}?policy=DB
-                                    <br> Длина пароля: {{ policies["DB"]["CHARS_COUNT"] }} символов
+                                    <br> Длина пароля: от {{ policies["DB"]["minlen"] }} до {{ policies["DB"]["maxlen"] }} символов
                                     <br> Набор символов для генерации пароля:
                                     <pre class="brush: html">
                                         {{ policies["DB"]["CHARS_ALLOWED"] }}
@@ -274,7 +276,7 @@
                                 <h4 id="line7_4">Получение пароля для PR - <a href="#top">#к началу</a></h4>
                                 <p>
                                     Строка запроса: {{ api_url }}?policy=PR
-                                    <br> Длина пароля: {{ policies["PR"]["CHARS_COUNT"] }} символов
+                                    <br> Длина пароля: от {{ policies["PR"]["minlen"] }} до {{ policies["PR"]["maxlen"] }} символов
                                     <br> Набор символов для генерации пароля:
                                     <pre class="brush: html">
                                         {{ policies["PR"]["CHARS_ALLOWED"] }}
@@ -292,7 +294,7 @@
                                 <h4 id="line7_5">Получение пароля для почтовых сервисов - <a href="#top">#к началу</a></h4>
                                 <p>
                                     Строка запроса: {{ api_url }}?policy=MAIL
-                                    <br> Длина пароля: {{ policies["MAIL"]["CHARS_COUNT"] }} символов
+                                    <br> Длина пароля: от {{ policies["MAIL"]["minlen"] }} до {{ policies["MAIL"]["maxlen"] }} символов
                                     <br> Набор символов для генерации пароля:
                                     <pre class="brush: html">
                                         {{ policies["MAIL"]["CHARS_ALLOWED"] }}
@@ -310,7 +312,7 @@
                                 <h4 id="line7_6">Получение пароля для политики по умолчанию - <a href="#top">#к началу</a></h4>
                                 <p>
                                     Строка запроса: {{ api_url }} или {{ api_url }}?policy=DEFAULT
-                                    <br> Длина пароля: {{ policies["DEFAULT"]["CHARS_COUNT"] }} символов
+                                    <br> Длина пароля: от {{ policies["DEFAULT"]["minlen"] }} до {{ policies["DEFAULT"]["minlen"] }} символов
                                     <br> Набор символов для генерации пароля:
                                     <pre class="brush: html">
                                         {{ policies["DEFAULT"]["CHARS_ALLOWED"] }}

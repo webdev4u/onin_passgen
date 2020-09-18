@@ -1,3 +1,2 @@
 sanic
-random-password-generator
 sanic-jinja2
